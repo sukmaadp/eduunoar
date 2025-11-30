@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>WebAR Rumah Gadang + Soal Interaktif</title>
+    <title>WebAR Rumah Gadang - Timer to Quiz</title>
 
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
@@ -12,42 +12,16 @@
 
     <!-- Gesture Controls -->
     <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@3.0.2/dist/aframe-gesture-detector.min.js"></script>
-
-    <style>
-      #soal-box {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 95%;
-        height: 45%;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        display: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      }
-      #soal-frame {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-    </style>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
-
-    <!-- BOX SOAL -->
-    <div id="soal-box">
-      <iframe id="soal-frame" src=""></iframe>
-    </div>
 
     <a-scene
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
       gesture-detector>
 
-      <!-- Tambahkan cahaya biar model tidak hitam -->
+      <!-- Cahaya -->
       <a-entity light="type: ambient; intensity: 1"></a-entity>
       <a-entity light="type: directional; intensity: 1" position="0 1 1"></a-entity>
 
@@ -55,7 +29,7 @@
         <a-asset-item id="gadang" src="rumah_gadang.glb"></a-asset-item>
       </a-assets>
 
-      <a-marker preset="hiro" id="markHiro">
+      <a-marker preset="hiro" id="hiroMarker">
 
         <a-gltf-model
           src="#gadang"
@@ -71,20 +45,18 @@
     </a-scene>
 
     <script>
-      const marker = document.querySelector("#markHiro");
-      const soalBox = document.querySelector("#soal-box");
-      const soalFrame = document.querySelector("#soal-frame");
+      let timerStarted = false;
 
-      // Ketika marker terdeteksi
+      const marker = document.querySelector("#hiroMarker");
+
       marker.addEventListener("markerFound", () => {
-        soalFrame.src = "https://sukmaadp.github.io/eduuno-soal/?id=34";
-        soalBox.style.display = "block";
-      });
+        if (!timerStarted) {
+          timerStarted = true;
 
-      // Ketika marker hilang
-      marker.addEventListener("markerLost", () => {
-        soalFrame.src = "";
-        soalBox.style.display = "none";
+          setTimeout(() => {
+            window.location.href = "https://sukmaadp.github.io/eduuno-soal/?id=34";
+          }, 10000); // 10 detik
+        }
       });
     </script>
 
