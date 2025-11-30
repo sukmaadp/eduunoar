@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>WebAR Rumah Gadang - Timer to Quiz</title>
+    <title>WebAR Rumah Gadang - Auto Redirect to Quiz</title>
 
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
@@ -12,6 +12,7 @@
 
     <!-- Gesture Controls -->
     <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@3.0.2/dist/aframe-gesture-detector.min.js"></script>
+
   </head>
 
   <body style="margin: 0; overflow: hidden;">
@@ -53,6 +54,7 @@
         if (!timerStarted) {
           timerStarted = true;
 
+          // Setelah 10 detik, pindah ke halaman soal
           setTimeout(() => {
             window.location.href = "https://sukmaadp.github.io/eduuno-soal/?id=34";
           }, 10000); // 10 detik
