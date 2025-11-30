@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>AR Edu Uno</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <style>
+    #infoBox {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      width: 85%;
+      display: none;
+      text-align: center;
+    }
+    #btnStart, #btnNext {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #btnStart {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007bff;
+      color: white;
+      z-index: 9999;
+    }
+    #btnNext {
+      margin-top: 10px;
+      background: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<button id="btnStart">Mulai AR</button>
+
+<div id="infoBox">
+  Tokoh dari Makassar ini memiliki keberanian luar biasa dan kepemimpinan yang kuat.
+  Rakyatnya menghormatinya karena ketegasan dan kebijaksanaannya.
+  Ia selalu memprioritaskan kepentingan rakyat, mengambil keputusan sulit,
+  dan berdiri teguh menghadapi berbagai ancaman dari luar.
+  <br>
+  <button id="btnNext">Lanjut ke Soal</button>
+</div>
+
+<a-scene embedded vr-mode-ui="enabled:false">
+  <a-entity id="model" visible="false">
+    <a-gltf-model src="./model-1764487202198.glb"
+                  position="0 -1 -3"
+                  scale="1 1 1">
+    </a-gltf-model>
+  </a-entity>
+
+  <a-entity camera></a-entity>
+</a-scene>
+
+<script>
+  const startBtn = document.getElementById("btnStart");
+  const infoBox = document.getElementById("infoBox");
+  const model = document.getElementById("model");
+  const nextBtn = document.getElementById("btnNext");
+
+  startBtn.onclick = () => {
+    model.setAttribute("visible", "true");
+    startBtn.style.display = "none";
+
+    setTimeout(() => { infoBox.style.display = "block"; }, 2000);
+  };
+
+  nextBtn.onclick = () => {
+    window.location.href = "https://sukmaadp.github.io/eduuno-soal/?id=1"; // ganti link soal
+  };
+</script>
+
+</body>
+</html>
