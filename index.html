@@ -11,9 +11,7 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
     <!-- Gesture Controls -->
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@latest/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@3.0.2/dist/aframe-gesture-detector.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
@@ -23,25 +21,30 @@
       arjs="sourceType: webcam; debugUIEnabled: false;"
       gesture-detector>
 
+      <!-- Tambahkan cahaya biar model tidak hitam -->
+      <a-entity light="type: ambient; intensity: 1"></a-entity>
+      <a-entity light="type: directional; intensity: 1" position="0 1 1"></a-entity>
+
       <a-assets>
         <a-asset-item id="sultan" src="sultan_hasannudin.glb"></a-asset-item>
       </a-assets>
 
       <a-marker preset="hiro">
 
-        <!-- INTERAKTIF: BISA GESER, PUTAR, ZOOM -->
+        <!-- Ukuran diperkecil: scale 2 -->
         <a-gltf-model
           id="model"
           src="#sultan"
           position="0 1 0"
           rotation="-90 0 0"
-          scale="4 4 4"
+          scale="2 2 2"
           gesture-handler>
         </a-gltf-model>
 
       </a-marker>
 
       <a-entity camera></a-entity>
+
     </a-scene>
 
   </body>
