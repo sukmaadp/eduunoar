@@ -156,10 +156,10 @@
     "benar": 1
   },
   "27": {
-    "kategori": "Musik Tradisional",
-    "soal": "Tifa adalah alat musik pukul yang berasal dari daerah…",
-    "opsi": ["Jawa", "Papua/Maluku", "Bali", "Sumatera"],
-    "benar": 1
+  "kategori": "Musik Tradisional",
+  "soal": "Saluang adalah alat musik tiup tradisional yang terbuat dari bambu, berasal dari daerah…",
+  "opsi": [ "Nusa Tenggara Timur (NTT)", "Sumatera Barat (Minangkabau)", "Maluku", "Jawa Barat (Sunda)"],
+  "benar": 1
   },
   "28": {
     "kategori": "Musik Tradisional",
